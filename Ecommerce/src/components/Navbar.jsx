@@ -45,3 +45,5 @@ function Navbar({ cartItemCount }) {
 }
 
 export default Navbar;
+
+

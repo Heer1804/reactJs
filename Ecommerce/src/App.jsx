@@ -3,6 +3,7 @@ import "./App.css";
 import ProductLists from "./components/ProductLists";
 import ProductCart from "./components/ProductCart";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 function App() {
 
   const products = [
@@ -88,9 +89,7 @@ function App() {
   return (
     <div
       style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "20px",
+       
       }}
     >
       <Navbar cartItemCount={cartItemCount}/>
@@ -105,11 +104,15 @@ function App() {
         ))}
       </div>
       <ProductCart items={cartItem} removeCart={removeCart} removeItem={removeItem} />
+      <Footer/>
+
     </div>
   );
 }
 
 export default App;
+
+
 
 
 
