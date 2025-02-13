@@ -12,7 +12,7 @@ function Navbar({ cartItemCount }) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '15px 30px',
+        padding: '2px 15px',
         backgroundColor: '#f9f9f9',
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         zIndex: 1000
@@ -20,7 +20,6 @@ function Navbar({ cartItemCount }) {
     >
       <h2 style={{ color: '#253489' }}>E-Commerce</h2>
 
-      {/* Cart Icon with Badge */}
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
         <FaShoppingCart size={24} style={{ cursor: 'pointer', color: 'rgb(0 12 82 / 69%)', margin:"-80px"}} />
         {cartItemCount > 0 && (
