@@ -34,7 +34,7 @@ function Counter() {
     margin: "5px",
     width: "100%",
   };
-
+ 
   return (
     <div style={containerStyle}>
       <div style={boxStyle}>
