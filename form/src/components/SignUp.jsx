@@ -51,3 +51,5 @@ const SignUp = ({ onSubmit }) => {
 }
 
 export default SignUp
+
+
