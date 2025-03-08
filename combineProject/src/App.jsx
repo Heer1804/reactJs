@@ -6,6 +6,7 @@ import Counter from "./components/Counter";
 import Clock from "./components/Clock";
 import Timer from "./components/Timer";
 import FormController from "./components/FormController";
+import FruitList from "./components/FruitList";
 
 const styles = {
   light: {
@@ -74,6 +75,7 @@ function App() {
           </div>
         )}
         {activeTab === "toDo" && <TodoList theme={theme} />}
+        {activeTab === "fruit" && <FruitList theme={theme} />}
         {activeTab === "counter" && <Counter theme={theme} />}
         {activeTab === "clock" && <Clock theme={theme} />}
         {activeTab === "timer" && <Timer theme={theme} />}
@@ -88,3 +90,5 @@ function App() {
 }
 
 export default App;
+
+

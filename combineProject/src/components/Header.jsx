@@ -3,11 +3,13 @@ import React from "react";
 function Header({ activeTab, setActiveTab, theme }) {
   const navItems = [
     { id: "home", label: "Home" },
+    { id: "fruit", label: "Fruit List" },
     { id: "toDo", label: "To Do List" },
     { id: "counter", label: "Counter" },
     { id: "clock", label: "Clock" },
     { id: "timer", label: "Timer" },
     { id: "form", label: "Sign Up" },
+   
   ];
 
   const headerStyle = {
@@ -89,3 +91,5 @@ function Header({ activeTab, setActiveTab, theme }) {
 }
 
 export default Header;
+
+
