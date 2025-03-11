@@ -23,7 +23,7 @@ const FormController = ({ theme }) => {
   const handleFormSubmit = (data) => {
     if (isLogin) {
       setUserData(data);
-      localStorage.setItem("userData", JSON.stringify(data)); // Save logged-in user
+      localStorage.setItem("userData", JSON.stringify(data));
     } else {
       const newCredentials = {
         name: data.name,
@@ -31,7 +31,7 @@ const FormController = ({ theme }) => {
         password: data.password,
       };
       setCredentials(newCredentials);
-      localStorage.setItem("credentials", JSON.stringify(newCredentials)); // Store credentials
+      localStorage.setItem("credentials", JSON.stringify(newCredentials)); 
       setIsLogin(true);
     }
   };
@@ -64,7 +64,7 @@ const FormController = ({ theme }) => {
           <button
             style={{
               marginTop: "20px",
-              background: "red",
+              background: "transparent",
               color: "white",
               border: "none",
               padding: "10px",
