@@ -13,7 +13,7 @@
     </section>
 
 <section> 
-<p>ScreenShots</p>
+ <h2><span class="emoji">📷</span> Screenshots </h2>
 
 
 ![Screenshot 2025-03-11 155434](https://github.com/user-attachments/assets/df81975c-514a-439b-8c8c-214118dc36dc)
