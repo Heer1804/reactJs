@@ -36,11 +36,11 @@
         <li><strong>Theme Switching 🌗:</strong> Toggle between light and dark modes with a slick button. Watch the app transform instantly!</li>
         <li><strong>Navigation Bar 🧭:</strong> A fixed header with tabs for Home, Fruit List, Todo List, Counter, Clock, Timer, and Sign Up/Login. Click away to explore!</li>
         <li><strong>Home Page 🏠:</strong> A warm welcome with info about React and JSX. Perfect for newbies and pros alike!</li>
-        <li><strong>Todo List ✅:</strong> Add tasks, check them off, or delete them. Stay organized with style!</li>
+        <li><strong>Todo List ✅:</strong> Add tasks, check them off, or delete them. Stay organized with style!Persists data using <code>localStorage</code>!</li>
         <li><strong>Fruit List 🍎:</strong> Manage your fruit stash—add fruits with names, colors, and quantities, and delete them when you’re done. Persists data using <code>localStorage</code>!</li>
-        <li><strong>Counter ➕➖:</strong> Increment, decrement, or reset a counter. The decrement button grays out at zero—smart, right?</li>
+        <li><strong>Counter ➕➖:</strong> Increment, decrement, or reset a counter. The decrement button grays out at zero—smart, right?Persists data using <code>localStorage</code>!</li>
         <li><strong>Clock ⏰:</strong> See the current time and date, plus a greeting that changes with the hour (Good Morning, Afternoon, etc.).</li>
-        <li><strong>Timer ⏱️:</strong> Start, stop, and restart a seconds timer. Perfect for timing your coffee break!</li>
+        <li><strong>Timer ⏱️:</strong> Start, stop, and restart a seconds timer. Perfect for timing your coffee break!Persists data using <code>localStorage</code>!</li>
         <li><strong>Form Controller 🔐:</strong> Sign up to register, then log in to see a welcome message. Credentials and user data are saved with <code>localStorage</code> for persistence!</li>
       </ul>
     </section>
