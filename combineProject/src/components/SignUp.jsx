@@ -71,3 +71,4 @@ const SignUp = ({ onSubmit, theme }) => {
 
 export default SignUp;
 
+
