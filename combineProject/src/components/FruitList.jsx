@@ -1,15 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const FruitList = ({ theme }) => {
-  const [fruits, setFruits] = useState([
-    { id: 1, name: "Apple", color: "red", quantity: 10 },
-    { id: 2, name: "Grapes", color: "green", quantity: 15 },
-    { id: 3, name: "BlueBerry", color: "blue", quantity: 5 },
-  ]);
+
+  const [fruits, setFruits] = useState(() => {
+    const savedFruits = localStorage.getItem("fruits");
+
+    return savedFruits
+      ? JSON.parse(savedFruits)
+      : [
+        { id: 1, name: "Apple", color: "red", quantity: 10 },
+        { id: 2, name: "Grapes", color: "green", quantity: 15 },
+        { id: 3, name: "BlueBerry", color: "blue", quantity: 5 },
+        ];
+  });
 
   const [newFruit, setNewFruit] = useState({ name: "", color: "", quantity: 1 });
   const newfruitRef = useRef(null);
   const isLightTheme = theme === "light";
+
+  useEffect(() => {
+    localStorage.setItem("fruits", JSON.stringify(fruits));
+  }, [fruits]);
 
   // Set body background color based on theme
   useEffect(() => {
@@ -104,3 +115,4 @@ const FruitList = ({ theme }) => {
 };
 
 export default FruitList;
+

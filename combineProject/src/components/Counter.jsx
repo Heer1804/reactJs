@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 function Counter({ theme }) {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(()=>{
+    const savedCounter = localStorage.getItem('counter');
+    return savedCounter ? parseInt(savedCounter) : 0;
+  
+  });
+
+  useEffect(() => {
+    localStorage.setItem("counter", counter.toString());
+  }, [counter]);
 
   const isLightTheme = theme === "light";
 
@@ -14,7 +22,7 @@ function Counter({ theme }) {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: isLightTheme ? "rgb(214 225 247)" : "rgb(30 30 30)", // Changes based on theme
+    backgroundColor: isLightTheme ? "rgb(214 225 247)" : "rgb(30 30 30)", 
   };
 
   const boxStyle = {

@@ -1,8 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 function Timer({ theme }) {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(() => {
+    const storedSeconds = localStorage.getItem("seconds");
+    return storedSeconds ? parseInt(storedSeconds) : 0;
+  });
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    localStorage.setItem("seconds", seconds.toString());
+  }, [seconds]);
 
   const startTimer = () => {
     if (!timerRef.current) {
@@ -20,10 +27,9 @@ function Timer({ theme }) {
   const restartTimer = () => {
     stopTimer();
     setSeconds(0);
-    startTimer();
+    localStorage.setItem("seconds", "0"); 
   };
 
-  // Theme-based styles (Matching Counter & Clock)
   const isLightTheme = theme === "light";
 
   const containerStyle = {
@@ -35,7 +41,7 @@ function Timer({ theme }) {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: isLightTheme ? "rgb(214 225 247)" : "rgb(30 30 30)", // Matching background
+    backgroundColor: isLightTheme ? "rgb(214 225 247)" : "rgb(30 30 30)",
   };
 
   const boxStyle = {
@@ -74,5 +80,3 @@ function Timer({ theme }) {
 }
 
 export default Timer;
-
-
