@@ -7,7 +7,6 @@ const FormController = ({ theme }) => {
   const [credentials, setCredentials] = useState(null);
   const [userData, setUserData] = useState(null);
 
-  // Load stored credentials from localStorage when the component mounts
   useEffect(() => {
     const storedCredentials = localStorage.getItem("credentials");
     const storedUser = localStorage.getItem("userData");
@@ -64,7 +63,7 @@ const FormController = ({ theme }) => {
           <button
             style={{
               marginTop: "20px",
-              background: "transparent",
+              background: "#ff00008c",
               color: "white",
               border: "none",
               padding: "10px",

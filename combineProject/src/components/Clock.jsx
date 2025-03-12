@@ -61,7 +61,7 @@ const Clock = ({ theme }) => {
     borderRadius: "12px",
     boxShadow: isLightTheme
       ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-      : "0 4px 6px rgba(255, 255, 255, -0.18)",
+      : "rgb(255 255 255 / 7%) 0px 0px 4px 6px",
     textAlign: "center",
     width: "300px",
   };
