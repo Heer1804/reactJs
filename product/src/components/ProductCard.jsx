@@ -20,7 +20,7 @@ const ProductCard = ({product , onBuy}) => {
                 width: "200px", 
                 padding: "40px", 
                 margin: "10px", 
-                backgroundColor: product.inStock ? "lightgrey" : "#e689ff",
+                backgroundColor: product.inStock ? "lightgrey" : "rgb(246 214 255)",
                 borderRadius: "8px" 
             }}
         > 
