@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import "../display.css"; // Ensure you have the correct path for your CSS file
+import "../display.css"; 
 
 function Display() {
   const [formData, setFormData] = useState([]);
@@ -10,7 +10,7 @@ function Display() {
   const [sortField, setSortField] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 4; // Set to 4 records per page
+  const recordsPerPage = 4; 
 
   useEffect(() => {
     const data = localStorage.getItem("formdataList");

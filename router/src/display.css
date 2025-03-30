@@ -1,4 +1,3 @@
-/* display.css */
 
 body {
   font-family: 'Arial', sans-serif;
@@ -90,12 +89,12 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  color: #dc3545; /* Red for delete */
+  color: #dc3545; 
   margin-right: 10px;
 }
 
 .edit-btn {
-  color: #28a745; /* Green for edit */
+  color: #28a745; 
 }
 
 .no-data {
