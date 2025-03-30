@@ -28,8 +28,6 @@ const Home = () => {
     const existingData = JSON.parse(localStorage.getItem("formdataList")) || [];
     const updatedData = [...existingData, formData];
     localStorage.setItem("formdataList", JSON.stringify(updatedData));
-    
-    // Reset formData including the image
     setFormData({ name: "", email: "", password: "", gender: "", hobby: [], city: "", image: "" });
     toast.success("✅ Record Inserted Successfully!");
   };
