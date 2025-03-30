@@ -1,64 +1,125 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { MdDeleteOutline } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+
+
+import "../display.css";
 
 function Display() {
+  const [formData, setFormData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [sortField, setSortField] = useState("name");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 5;
 
-    const [formData , setFormData] = useState([])
-
-    useEffect(() => {
-        const data = localStorage.getItem('formdataList');
-        if (data) {
-          setFormData(JSON.parse(data));
-        }
-      }, []);
-
-    const delData = (i) => {
-        let oldData = [...formData]
-        oldData.splice(i,1)
-        setFormData(oldData)
-        localStorage.setItem("students" , JSON.stringify(oldData)) 
+  useEffect(() => {
+    const data = localStorage.getItem("formdataList");
+    if (data) {
+      setFormData(JSON.parse(data));
     }
-    
+  }, []);
+
+  const delData = (email) => {
+    let updatedData = formData.filter((item) => item.email !== email);
+    setFormData(updatedData);
+    localStorage.setItem("formdataList", JSON.stringify(updatedData));
+  };
+
+  const filteredData = formData.filter(
+    (item) =>
+      (item.name && item.name.toLowerCase().includes(search.toLowerCase())) ||
+      (item.email && item.email.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    let valA = a[sortField]?.toString().toLowerCase() || "";
+    let valB = b[sortField]?.toString().toLowerCase() || "";
+    return sortOrder === "asc" ? valA.localeCompare(valB) : valB.localeCompare(valA);
+  });
+
+  const totalPages = Math.max(1, Math.ceil(sortedData.length / recordsPerPage));
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = sortedData.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(1);
+    }
+  }, [sortedData, totalPages]);
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-    <h3>Sudents Data</h3>
-    <table border="1" align="center" style={{ borderCollapse: 'collapse', minWidth: '300px' }}>
-      <thead>
-        <tr>
-          <th style={{ padding: '10px',  color: '#fff' }}>Name</th>
-          <th style={{ padding: '10px', color: '#fff' }}>Email</th>
-          <th style={{ padding: '10px', color: '#fff' }}>Password</th>
-          <th style={{ padding: '10px', color: '#fff' }}>Gender</th>
-          <th style={{ padding: '10px', color: '#fff' }}>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {formData.length > 0 ? (
-          formData.map((v, i) => (
-            <tr key={i}>
-              <td style={{ padding: '8px', border: '1px solid #ddd' }}>{v.name}</td>
-              <td style={{ padding: '8px', border: '1px solid #ddd' }}>{v.email}</td>
-              <td style={{ padding: '8px', border: '1px solid #ddd' }}>{v.password}</td>
-              <td style={{ padding: '8px', border: '1px solid #ddd' }}>{v.gender}</td>
-              <td style={{ padding: '8px', border: '1px solid #ddd' }}>
-                <button onClick={() => delData(i)} >Delete</button>
-                <Link to={"/update/" + i}>Update</Link>
- 
-              </td>
-            </tr>
-          ))
-        ) : (
+    <div>
+      <h3 className="title">Students Data</h3>
+      <div className="controls">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search by name or email"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select className="sort-select" value={sortField} onChange={(e) => setSortField(e.target.value)}>
+          <option value="name">Name</option>
+          <option value="email">Email</option>
+          <option value="city">City</option>
+        </select>
+        <button className="sort-btn" onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
+          {sortOrder === "asc" ? "⬆" : "⬇"}
+        </button>
+      </div>
+      <table className="styled-table">
+        <thead>
           <tr>
-            <td colSpan="2" style={{ padding: '15px', textAlign: 'center', color: '#666' }}>
-              No data available
-            </td>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Gender</th>
+            <th>City</th>
+            <th>Hobbies</th>
+            <th>Image</th>
+            <th>Action</th>
           </tr>
-        )}
-  </tbody>
+        </thead>
+        <tbody>
+          {currentRecords.length > 0 ? (
+            currentRecords.map((v, i) => (
+              <tr key={i}>
+                <td>{v.name}</td>
+                <td>{v.email}</td>
+                <td>••••••••</td>
+                <td>{v.gender}</td>
+                <td>{v.city}</td>
+                <td>{v.hobby?.length > 0 ? v.hobby.join(", ") : "No hobbies"}</td>
+                <td>{v.image ? <img src={v.image} alt="User" className="user-image" /> : "No Image"}</td>
+                <td>
+                  <button className="delete-btn" onClick={() => delData(v.email)}><MdDeleteOutline />
+                  </button>
+                  <Link to={`/update/${i}`}><FaEdit />
+                  </Link>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="8" className="no-data">No data available</td>
+            </tr>
+          )}
+        </tbody>
       </table>
+      <div className="pagination">
+        <button className="pagination-btn" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span className="pagination-info">Page {currentPage} of {totalPages}</span>
+        <button className="pagination-btn" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }
 
-export default Display
+export default Display;
