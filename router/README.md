@@ -83,5 +83,5 @@ npm start
     <p>Click the <strong>Delete</strong> button, and a confirmation prompt will appear before removing the student.</p>
 
   <h2>📜 License</h2>
-    <p>🔓 MIT License - You are free to modify and distribute this project.</p>
+    <p>This project is licensed under the MIT License.</p>
 
