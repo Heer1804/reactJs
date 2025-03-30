@@ -1,147 +1,131 @@
+/* display.css */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f4f800;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4; 
   margin: 0;
-  padding: 0;
-  color: #2c3e50;
+  padding: 20px;
 }
 
+.display-container {
+  max-width: 1200px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-h3 {
+.title {
   text-align: center;
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.search-container {
+.controls {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
-  gap: 10px;
 }
 
-.search-container input {
-  flex: 1;
-  padding: 2px;
+.search-input {
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #1a1a2e;
-  margin-right: 10px;
+  border-radius: 4px;
+  width: 30%;
 }
 
-.search-container select,
-.search-container button {
-  padding: 12px;
+.sort-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 20%;
+}
+
+.sort-btn {
+  padding: 10px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
+  background-color: rgb(24, 29, 67);
   color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.search-container select {
-  background-color: #162b4d;
+.sort-btn:hover {
+  background-color:rgb(24, 29, 67);
 }
 
-.search-container select:hover {
-  background-color: #0f1e37;
-}
-
-.search-container button {
-  background-color: #e74c3c;
-}
-
-.search-container button:hover {
-  background-color: #c0392b;
-}
-
-.table-container {
-  overflow-x: auto;
-}
-
-table {
+.styled-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
+  margin: 20px 0;
 }
 
-thead {
-  background: #162b4d;
-  color: white;
-  font-size: 18px;
-}
-
-thead th {
-  padding: 15px;
-  text-align: left;
-  cursor: pointer;
-  position: relative;
-}
-
-tbody td {
+.styled-table th,
+.styled-table td {
   padding: 12px;
+  text-align: left;
   border-bottom: 1px solid #ddd;
-  font-size: 16px;
 }
 
-tbody td img {
+.styled-table th {
+  background-color: rgb(24, 29, 67);
+  color: white;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1; 
+}
+
+.user-image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px solid #ddd;
 }
 
-.action-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.action-buttons button {
-  padding: 8px 12px;
+.delete-btn,
+.edit-btn {
+  background: none;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  color: #dc3545; /* Red for delete */
+  margin-right: 10px;
 }
 
-.delete-btn {
-  background-color: transparent;
-  color: rgb(33, 71, 208);
-  font-size: 23px;
+.edit-btn {
+  color: #28a745; /* Green for edit */
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 20px;
-  gap: 8px;
 }
 
-.pagination button {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #162b4d;
+.pagination-btn {
+  padding: 10px 15px;
+  border: 1px solid rgb(24, 29, 67);
+  background-color: rgb(24, 29, 67);
   color: white;
-  font-size: 14px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: 0.3s;
+  margin: 0 5px;
+  transition: background-color 0.3s;
 }
 
-.pagination button:hover {
-  background: #0f1e37;
-}
-
-.pagination button:disabled {
-  background: #ccc;
+.pagination-btn:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
-  color: #666;
+}
+
+.pagination-info {
+  align-self: center;
+  margin: 0 10px;
 }

@@ -28,14 +28,14 @@ const Home = () => {
     const existingData = JSON.parse(localStorage.getItem("formdataList")) || [];
     const updatedData = [...existingData, formData];
     localStorage.setItem("formdataList", JSON.stringify(updatedData));
-
+    
+    // Reset formData including the image
     setFormData({ name: "", email: "", password: "", gender: "", hobby: [], city: "", image: "" });
     toast.success("✅ Record Inserted Successfully!");
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     if (type === "checkbox") {
       setFormData((prevData) => ({
         ...prevData,
@@ -47,72 +47,74 @@ const Home = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, marginTop: '70px' }}>
       <div style={styles.card}>
-        <h2 style={styles.heading}>Add Data</h2>
+        <h2 style={styles.heading}>Students Data</h2>
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.inputGroup}>
-            <label>Name</label>
-            <input type="text" name="name" onChange={handleChange} value={formData.name} style={styles.input} />
+            <label style={styles.label}>Name</label>
+            <input type="text" name="name" onChange={handleChange} value={formData.name} style={styles.input} placeholder="Enter your name" />
           </div>
 
           <div style={styles.inputGroup}>
-            <label>Email</label>
-            <input type="email" name="email" onChange={handleChange} value={formData.email} style={styles.input} />
+            <label style={styles.label}>Email</label>
+            <input type="email" name="email" onChange={handleChange} value={formData.email} style={styles.input} placeholder="Enter your email" />
           </div>
 
           <div style={styles.inputGroup}>
-            <label>Password</label>
-            <input type="password" name="password" onChange={handleChange} value={formData.password} style={styles.input} />
+            <label style={styles.label}>Password</label>
+            <input type="password" name="password" onChange={handleChange} value={formData.password} style={styles.input} placeholder="Enter your password" />
           </div>
 
           <div style={styles.inputGroup}>
-            <label>Gender</label>
+            <label style={styles.label}>Gender</label>
             <div style={styles.radioGroup}>
-              <input type="radio" name="gender" value="male" onChange={handleChange} checked={formData.gender === "male"} />
-              <label> Male</label>
-              <input type="radio" name="gender" value="female" onChange={handleChange} checked={formData.gender === "female"} style={{ marginLeft: "10px" }} />
-              <label> Female</label>
+              <label style={styles.radioLabel}>
+                <input type="radio" name="gender" value="male" onChange={handleChange} checked={formData.gender === "male"} />
+                <span style={styles.radioText}>Male</span>
+              </label>
+              <label style={styles.radioLabel}>
+                <input type="radio" name="gender" value="female" onChange={handleChange} checked={formData.gender === "female"} />
+                <span style={styles.radioText}>Female</span>
+              </label>
             </div>
           </div>
 
           <div style={styles.inputGroup}>
-  <label>Hobbies</label>
-  <div style={styles.hobbyContainer}>
-    {["Music", "Reading", "Coding", "Dancing"].map((h) => (
-      <label key={h} style={styles.hobbyLabel}>
-        <input type="checkbox" name="hobby" value={h} onChange={handleChange} checked={formData.hobby.includes(h)} />
-        {h}
-      </label>
-    ))}
-  </div>
-</div>
-
+            <label style={styles.label}>Hobbies</label>
+            <div style={styles.hobbyContainer}>
+              {["Music", "Reading", "Coding", "Dancing"].map((h) => (
+                <label key={h} style={styles.hobbyLabel}>
+                  <input type="checkbox" name="hobby" value={h} onChange={handleChange} checked={formData.hobby.includes(h)} />
+                  <span style={styles.checkboxText}>{h}</span>
+                </label>
+              ))}
+            </div>
+          </div>
 
           <div style={styles.inputGroup}>
-            <label>City</label>
+            <label style={styles.label}>City</label>
             <select name="city" value={formData.city} onChange={handleChange} style={styles.select}>
-              <option value="">Select City</option>
+              <option value="">Select your city</option>
               {cities.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
+                <option key={c} value={c}>{c}</option>
               ))}
             </select>
           </div>
 
           <div style={styles.inputGroup}>
-            <label>Profile Image</label>
+            <label style={styles.label}>Profile Image</label>
             <input type="file" accept="image/*" onChange={handleImageChange} style={styles.fileInput} />
             {formData.image && (
               <div style={styles.imagePreview}>
-                <p>Preview:</p>
                 <img src={formData.image} alt="Preview" style={styles.image} />
               </div>
             )}
           </div>
 
-          <button type="submit" style={styles.button}>Submit</button>
+          <div style={styles.buttonContainer}>
+            <button type="submit" style={styles.button}>Submit</button>
+          </div>
         </form>
       </div>
       <ToastContainer />
@@ -122,99 +124,102 @@ const Home = () => {
 
 const styles = {
   container: {
-      maxWidth: "500px",
-      margin: "100px auto 30px",
-      padding: "20px",
-      borderRadius: "10px",
-      boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-      color: "#fff",
-      textAlign: "center",
-    },
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+  },
   card: {
-    backdropFilter: "blur(10px)",
-    background: "rgb(255 255 255 / 6%)",
-    padding: "30px",
+    background: "#ffffff", 
+    padding: "40px 80px",
     borderRadius: "12px",
-    boxShadow: "rgb(255 255 255 / 6%) 0px 4px 20px",
-    width: "400px",
-    textAlign: "center",
-    transition: "0.3s",
-    border: "1.5px solid rgba(255, 255, 255, 0.2)",
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+    width: "100%",
+    maxWidth: "450px",
   },
   heading: {
-    marginBottom: "20px",
-    color: "#fff",
-    fontSize: "22px",
+    marginBottom: "30px",
+    fontSize: "28px",
+    textAlign: "center",
+    color: "#333333",
+    fontWeight: "700",
   },
   form: {
     display: "flex",
     flexDirection: "column",
+    gap: "20px",
   },
   inputGroup: {
-    marginBottom: "15px",
-    textAlign: "left",
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+  },
+  label: {
+    color: "#555555", 
+    fontSize: "18px",
+    fontWeight: "600",
   },
   input: {
     width: "100%",
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    background: "rgba(255, 255, 255, 0.1)",
-    color: "#fff",
-    fontSize: "16px",
-    transition: "0.3s",
+    padding: "12px",
+    borderRadius: "6px",
+    border: "1px solid #cccccc", 
+    background: "#f8f9fa",
+    color: "#333333",
+    fontSize: "14px",
+    transition: "border-color 0.3s, background-color 0.3s",
   },
   select: {
     width: "100%",
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid rgba(255, 255, 255, 0.3)",
-    background: "rgba(255, 255, 255, 0.1)",
-    color: "#fff",
-  },
-  fileInput: {
-    width: "100%",
-  },
-  imagePreview: {
-    marginTop: "10px",
-  },
-  image: {
-    width: "90px",
-    height: "90px",
-    objectFit: "cover",
-    borderRadius: "8px",
-  },
-  button: {
     padding: "12px",
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    color: "#fff",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    fontSize: "16px",
-    transition: "0.3s",
-  },
-  checkboxLabel: {
-    display: "block",
-    marginBottom: "5px",
-    color: "#fff",
+    borderRadius: "6px",
+    border: "1px solid #cccccc",
+    background: "#f8f9fa",
+    color: "#333333",
+    fontSize: "14px",
   },
   radioGroup: {
     display: "flex",
-    alignItems: "center",
-    color: "#fff",
+    gap: "20px",
+  },
+  radioLabel: {
+    color: "#555555",
   },
   hobbyContainer: {
     display: "flex",
-    gap: "15px", // Adds spacing between checkboxes
-    flexWrap: "wrap", // Ensures it stays on one line but wraps if needed
-    alignItems: "center",
+    flexWrap: "wrap",
+    gap: "10px",
   },
   hobbyLabel: {
+    color: "#555555",
+  },
+  fileInput: {
+    color: "#333333",
+    fontSize: "14px",
+  },
+  imagePreview: {
+    marginTop: "10px",
+    textAlign: "center",
+  },
+  image: {
+    maxWidth: "100px",
+    borderRadius: "6px",
+  },
+  buttonContainer: {
     display: "flex",
-    alignItems: "center",
-    gap: "5px",
+    justifyContent: "center",
+  },
+  button: {
+    padding: "12px 20px",
+    background: "rgb(26 16 108)",
     color: "#fff",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+    transition: "background-color 0.3s, transform 0.3s",
+    fontSize: "16px",
+    fontWeight: "600",
   },
 };
 

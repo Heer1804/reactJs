@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-
-
-import "../display.css";
+import "../display.css"; // Ensure you have the correct path for your CSS file
 
 function Display() {
   const [formData, setFormData] = useState([]);
@@ -12,7 +10,7 @@ function Display() {
   const [sortField, setSortField] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 5;
+  const recordsPerPage = 4; // Set to 4 records per page
 
   useEffect(() => {
     const data = localStorage.getItem("formdataList");
@@ -51,7 +49,7 @@ function Display() {
   }, [sortedData, totalPages]);
 
   return (
-    <div>
+    <div className="display-container">
       <h3 className="title">Students Data</h3>
       <div className="controls">
         <input
@@ -93,11 +91,13 @@ function Display() {
                 <td>{v.gender}</td>
                 <td>{v.city}</td>
                 <td>{v.hobby?.length > 0 ? v.hobby.join(", ") : "No hobbies"}</td>
-                <td>{v.image ? <img src={v.image} alt="User" className="user-image" /> : "No Image"}</td>
+                <td>{v.image ? <img src={v.image} alt="User " className="user-image" /> : "No Image"}</td>
                 <td>
-                  <button className="delete-btn" onClick={() => delData(v.email)}><MdDeleteOutline />
+                  <button className="delete-btn" onClick={() => delData(v.email)}>
+                    <MdDeleteOutline />
                   </button>
-                  <Link to={`/update/${i}`}><FaEdit />
+                  <Link to={`/update/${i}`} className="edit-btn">
+                    <FaEdit />
                   </Link>
                 </td>
               </tr>
