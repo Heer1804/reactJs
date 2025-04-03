@@ -12,7 +12,10 @@ export const deleteEmployee = (index) => ({
   payload: index,
 });
 
-export const updateEmployee = (id, updatedEmployee) => ({
-  type: UPDATE,
-  payload: { id, updatedEmployee },
-});
+export const updateEmployee = (payload) => {
+    return {
+        type: UPDATE,
+        payload,
+    };
+};
+

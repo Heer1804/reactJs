@@ -6,7 +6,7 @@ import { Container, Card, Form, Button, Row, Col, Alert } from "react-bootstrap"
 
 function Update() {
     const { id } = useParams();
-    const empList = useSelector((state) => state.employee);
+    const empList = useSelector((state) => state.employee || []);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -20,14 +20,15 @@ function Update() {
         image: "",
         role: ""
     });
+
     const [error, setError] = useState("");
 
     useEffect(() => {
-        // Check if empList is defined and if the id is a valid index
-        if (empList && empList.length > 0 && empList[id]) {
-            setEmployee(empList[id]);
+        const empIndex = parseInt(id, 10);
+        if (empList && empList.length > empIndex && empIndex >= 0) {
+            const selectedEmployee = { ...empList[empIndex], hobbies: empList[empIndex].hobbies || [] };
+            setEmployee(selectedEmployee);
         } else {
-            // Redirect or show an error if the employee is not found
             setError("Employee not found");
             navigate("/");
         }
@@ -45,22 +46,22 @@ function Update() {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onloadend = () => {
-                setEmployee({ ...employee, image: reader.result });
+                setEmployee((prev) => ({ ...prev, image: reader.result }));
             };
             setError("");
         }
     };
 
-    const handleHobbies = (e) => {
-        const { value, checked } = e.target;
-        setEmployee((prev) => ({
-            ...prev,
-            hobbies: checked 
-                ? [...prev.hobbies, value] 
-                : prev.hobbies.filter((hobby) => hobby !== value)
-        }));
-        setError("");
-    };
+   const handleHobbies = (e) => {
+    const { value, checked } = e.target;
+    setEmployee((prev) => ({
+        ...prev,
+        hobbies: checked 
+            ? [...prev.hobbies, value]
+            : prev.hobbies.filter((h) => h !== value) 
+    }));
+    setError("");
+};
 
     const updateData = (e) => {
         e.preventDefault();
@@ -85,7 +86,7 @@ function Update() {
             return;
         }
 
-        dispatch(updateEmployee(id, employee));
+        dispatch(updateEmployee({ id: parseInt(id, 10), updatedEmployee: employee }));
         navigate("/");
     };
 
@@ -132,8 +133,29 @@ function Update() {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
+                                    <Form.Label>Hobbies</Form.Label>
+                                    <div>
+                                        {["Reading", "Gaming", "Traveling", "Cooking"].map((hobby) => (
+                                            <Form.Check
+                                                key={hobby}
+                                                type="checkbox"
+                                                label={hobby}
+                                                value={hobby}
+                                                checked={employee.hobbies.includes(hobby)}
+                                                onChange={handleHobbies}
+                                            />
+                                        ))}
+                                    </div>
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
                                     <Form.Label>Profile Image</Form.Label>
                                     <Form.Control type="file" accept="image/*" onChange={handleImage} />
+                                    {employee.image && (
+                                        <div className="mt-3">
+                                            <img src={employee.image} alt="Preview" width="100" height="100" className="rounded-circle border" />
+                                        </div>
+                                    )}
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
@@ -160,4 +182,3 @@ function Update() {
 }
 
 export default Update;
-

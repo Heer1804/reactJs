@@ -38,7 +38,6 @@ const Update = () => {
     }));
   };
 
-
   const submitData = (e) => {
     e.preventDefault();
     const formdata = JSON.parse(localStorage.getItem("formdataList")) || [];
