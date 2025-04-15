@@ -1,63 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 function Products() {
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        getProducts();
-    }, []);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    const getProducts = async () => {
-        let productData = await fetch("http://localhost:3000/products");
-        let records = await productData.json();
-        setProducts(records);
-    };
+  const getProducts = async () => {
+    const res = await fetch("http://localhost:3000/products");
+    const data = await res.json();
+    setProducts(data);
+  };
 
-    let deleteProduct = async (id) => {
-        let deleteData = await fetch("http://localhost:3000/products/" + id, {
-            method: "delete",
-        });
-        console.log(deleteData)
-        getProducts();
-    }
+  const deleteProduct = async (id) => {
+    await fetch(`http://localhost:3000/products/${id}`, {
+      method: "DELETE",
+    });
+    getProducts();
+  };
 
-    return (
-        <Container className="mt-4">
-            <Row className="justify-content-center">
-                {products.map((product) => (
-                    <Col key={product.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-                        <Card className="shadow-sm h-100 border-0 rounded-lg overflow-hidden">
-                            <div className="position-relative">
-                                <Button
-                                    variant="danger"
-                                    className="position-absolute top-0 end-0 m-2 p-0 rounded-circle"
-                                    style={{ width: '25px', height: '25px', fontSize: '14px' }}
-                                    onClick={() => deleteProduct(product.id)}
-                                >
-                                    ×
-                                </Button>
-                                <Card.Img variant="top" src={product.image} className="p-3" style={{ height: '180px', objectFit: 'contain' }} />
-                            </div>
-                            <Card.Body className="d-flex flex-column">
-                                <Card.Title className="text-truncate" title={product.title}>{product.title}</Card.Title>
-                                <Card.Text className="text-muted small flex-grow-1">
-                                    {product.description.length > 100 ? product.description.substring(0, 100) + "..." : product.description}
-                                </Card.Text>
-                                <Card.Text className="fw-bold text-primary">${product.price.toFixed(2)}</Card.Text>
-                                <Card.Text className="text-muted small">Category: {product.category}</Card.Text>
-                                <Button variant="primary" className="mt-auto w-100">Buy Now</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
-        </Container>
-    );
+  return (
+    <Container className="mt-5 pt-5">
+      <h2 className="text-center mb-4 fw-bold">Our Products</h2>
+      <Row className="justify-content-center">
+        {products.map((product) => (
+          <Col key={product.id} md={6} className="mb-4">
+            <Card className="shadow-lg h-100 border-0 rounded-4 position-relative hover-shadow">
+              <Button
+                variant="outline-danger"
+                className="position-absolute top-0 end-0 m-2 p-0 rounded-circle border-0"
+                style={{
+                  width: '30px',
+                  height: '30px',
+                  fontSize: '18px',
+                  lineHeight: '1',
+                }}
+                onClick={() => deleteProduct(product.id)}
+                title="Delete Product"
+              >
+                ×
+              </Button>
+
+              <Card.Img
+                variant="top"
+                src={product.image}
+                className="p-3"
+                style={{ height: '180px', objectFit: 'contain' }}
+              />
+
+              <Card.Body className="d-flex flex-column">
+                <Card.Title className="text-truncate fw-semibold" title={product.title}>
+                  {product.title}
+                </Card.Title>
+
+                <Card.Text className="text-muted small mb-2" style={{ minHeight: '60px' }}>
+                  {product.description.length > 100
+                    ? `${product.description.substring(0, 100)}...`
+                    : product.description}
+                </Card.Text>
+
+                <div className="mb-2">
+                  <span className="fw-bold text-primary fs-5">${product.price.toFixed(2)}</span>
+                </div>
+
+                <Card.Text className="text-muted small">Category: <strong>{product.category}</strong></Card.Text>
+
+                <Button
+                  variant="primary"
+                  className="mt-auto w-100 rounded-pill fw-semibold"
+                  style={{ transition: 'all 0.2s ease-in-out' }}
+                >
+                  Buy Now
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
 }
 
 export default Products;
