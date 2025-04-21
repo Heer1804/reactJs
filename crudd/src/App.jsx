@@ -3,7 +3,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import StudentsTable from './Display.jsx'; 
 
-
 const App = () => {
   const [formData, setFormData] = useState({
     id: "",
@@ -24,8 +23,7 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem("formdataList", JSON.stringify(data));
-  }, [data]); // Sync localStorage whenever data changes
-
+  }, [data]);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -40,7 +38,7 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newData = { ...formData, id: Date.now().toString() };
-    setData((prevData) => [...prevData, newData]); // Update state
+    setData((prevData) => [...prevData, newData]);
     setFormData({
       id: "",
       name: "",
@@ -51,7 +49,7 @@ const App = () => {
       city: "",
       image: "",
     });
-    toast.success("✅ Record Inserted Successfully!");
+    toast.success("Record Inserted Successfully!");
   };
 
   const handleChange = (e) => {

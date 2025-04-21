@@ -1,0 +1,28 @@
+{
+  "blogs": [
+    {
+      "id": "0ae9",
+      "category": "Technology",
+      "title": "What's New on the GenAI Platform",
+      "blogger_name": "Grace Morgan ",
+      "image": "https://www.gravatar.com/avatar/7af42e223f0b0b5454ddda6ba42240bdf99b3cd5a4cf865a7b99a4d15be15c0d?default=retro",
+      "description": "Hear from experts at DigitalOcean and Vijil about building a powerful Knowledge Base for AI agents. Learn to integrate documentation, FAQs, and custom data, tackle common challenges, and apply best practices. Discover how new features like web crawling and faster indexing can enhance performance. Whether you’re starting or optimizing your AI workflow, this session will equip you with the insights and tools to maximize GenAI’s potential."
+    },
+    {
+      "id": "8328",
+      "category": "Sports",
+      "title": "The Power of Sports: More Than Just a Game",
+      "blogger_name": "Rahul",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Youth-soccer-indiana.jpg/1200px-Youth-soccer-indiana.jpg",
+      "description": "Sports have always been more than just physical activity—they are a symbol of unity, discipline, and personal growth. Whether it's the roar of a football stadium, the precision of a tennis serve, or the endurance of a marathon runner, sports inspire individuals to push their limits and embrace challenges head-on.\n\nFrom grassroots competitions to international championships, sports foster a sense of community and passion. Athletes become role models, not just for their performance, but for their resilience, teamwork, and determination. In a world often divided by differences, a single match can bring millions together.\nMoreover, the impact of sports on mental and physical health is undeniable. They teach us to win with humility and lose with grace. In essence, sports are a reflection of life—full of highs, lows, and lessons that shape us."
+    },
+    {
+      "id": "6552",
+      "category": "Sports",
+      "title": "The Power of Sports: More Than Just a Game",
+      "blogger_name": "Rahul",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Youth-soccer-indiana.jpg/1200px-Youth-soccer-indiana.jpg",
+      "description": "Sports have always been more than just physical activity—they are a symbol of unity, discipline, and personal growth. Whether it's the roar of a football stadium, the precision of a tennis serve, or the endurance of a marathon runner, sports inspire individuals to push their limits and embrace challenges head-on.\n\nFrom grassroots competitions to international championships, sports foster a sense of community and passion. Athletes become role models, not just for their performance, but for their resilience, teamwork, and determination. In a world often divided by differences, a single match can bring millions together.\nMoreover, the impact of sports on mental and physical health is undeniable. They teach us to win with humility and lose with grace. In essence, sports are a reflection of life—full of highs, lows, and lessons that shape us."
+    }
+  ]
+}

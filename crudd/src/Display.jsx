@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
-const StudentsTable = ({ data = [], delData }) => { // Default to empty array
+const StudentsTable = ({ data = [], delData }) => {
   const [search, setSearch] = useState("");
   const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");

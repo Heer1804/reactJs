@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const Todo = () => {
 
     const [task, setTask] = useState("");
@@ -22,13 +21,10 @@ const Todo = () => {
         setTasks(updatedTask);
     };
 
-
     const deleteTask = (index) => {
         setTasks(tasks.filter((_, i) => i !== index));
     };
-
-
-        
+  
   return (
     <div style={{
       width: "400px",
@@ -113,8 +109,6 @@ const Todo = () => {
       </ul>
     </div>
   );
-    
-
 }
 
 export default Todo;
