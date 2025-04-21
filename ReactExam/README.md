@@ -99,7 +99,8 @@ npm install</code></pre>
   <hr>
 
   <h2>📸 Screenshots</h2>
-  ![Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/6a32d04b-a242-4cef-abcf-7b4cc130ae2e)
+  
+![Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/6a32d04b-a242-4cef-abcf-7b4cc130ae2e)
 ![Screenshot 2025-04-21 160201](https://github.com/user-attachments/assets/aeeedfe2-1663-4eba-b0f0-cd30e4368ad0)
 ![Screenshot 2025-04-21 160142](https://github.com/user-attachments/assets/b907b8fb-d895-4ac4-87c0-0157f62898d4)
 ![Screenshot 2025-04-21 160122](https://github.com/user-attachments/assets/712e4714-5df5-4b99-b14a-793bb9573bf4)
