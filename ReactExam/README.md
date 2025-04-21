@@ -100,7 +100,7 @@ npm install</code></pre>
 
   <h2>📸 Screenshots to Add</h2>
   <ul>
-   ![Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/bed989f1-4d0a-4ef4-9e52-53788c190d69)
+   [Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/bed989f1-4d0a-4ef4-9e52-53788c190d69)
 ![Screenshot 2025-04-21 160201](https://github.com/user-attachments/assets/7adfeab0-f6c2-4f01-b705-1598bd2a8552)
 ![Screenshot 2025-04-21 160142](https://github.com/user-attachments/assets/8905dc7e-4586-4bce-86ad-6b241ca6610b)
 ![Screenshot 2025-04-21 160122](https://github.com/user-attachments/assets/1548f812-1c85-4e67-a14f-b45df19abb3d)
