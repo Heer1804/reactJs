@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 
 function Add() {
-  // Initial form state
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -11,7 +10,6 @@ function Add() {
     image: '',
   });
 
-  // Retrieve existing data from localStorage
   const [entries, setEntries] = useState(() => {
     const saved = localStorage.getItem('formdataList');
     return saved ? JSON.parse(saved) : [];
@@ -25,7 +23,6 @@ function Add() {
     image: false,
   });
 
-  // Handle input change and track touched fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -33,11 +30,8 @@ function Add() {
     setErrorMessage('');
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validation
     if (formData.name.trim().length < 3) {
       setErrorMessage('Please enter a name with at least 3 characters.');
       return;
@@ -59,7 +53,6 @@ function Add() {
       return;
     }
 
-    // Create a new entry
     const newEntry = {
       ...formData,
       id: Date.now().toString(),
@@ -69,8 +62,6 @@ function Add() {
     const updatedEntries = [...entries, newEntry];
     setEntries(updatedEntries);
     localStorage.setItem('formdataList', JSON.stringify(updatedEntries));
-
-    // Reset form
     setFormData({ id: '', name: '', email: '', phone: '', image: '' });
     setTouchedFields({ name: false, email: false, phone: false, image: false });
     setErrorMessage('');
