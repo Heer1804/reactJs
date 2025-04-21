@@ -98,16 +98,14 @@ npm install</code></pre>
 
   <hr>
 
-  <h2>📸 Screenshots to Add</h2>
-  <ul>
-   [Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/bed989f1-4d0a-4ef4-9e52-53788c190d69)
-![Screenshot 2025-04-21 160201](https://github.com/user-attachments/assets/7adfeab0-f6c2-4f01-b705-1598bd2a8552)
-![Screenshot 2025-04-21 160142](https://github.com/user-attachments/assets/8905dc7e-4586-4bce-86ad-6b241ca6610b)
-![Screenshot 2025-04-21 160122](https://github.com/user-attachments/assets/1548f812-1c85-4e67-a14f-b45df19abb3d)
-![Screenshot 2025-04-21 155955](https://github.com/user-attachments/assets/5eb895ec-4851-4890-aa4b-1c8a7d5ee518)
+  <h2>📸 Screenshots</h2>
+  ![Screenshot 2025-04-21 160227](https://github.com/user-attachments/assets/6a32d04b-a242-4cef-abcf-7b4cc130ae2e)
+![Screenshot 2025-04-21 160201](https://github.com/user-attachments/assets/aeeedfe2-1663-4eba-b0f0-cd30e4368ad0)
+![Screenshot 2025-04-21 160142](https://github.com/user-attachments/assets/b907b8fb-d895-4ac4-87c0-0157f62898d4)
+![Screenshot 2025-04-21 160122](https://github.com/user-attachments/assets/712e4714-5df5-4b99-b14a-793bb9573bf4)
+![Screenshot 2025-04-21 155955](https://github.com/user-attachments/assets/4d7754f5-ae92-429c-92e3-65ed53f10853)
 
-  </ul>
-
+ 
   <hr>
 
   <h2>🙋 Tips</h2>
